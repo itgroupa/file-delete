@@ -54,13 +54,12 @@ void DeleteEmptyFolders(string p)
         files = Directory.GetFiles(p);
         directories = Directory.GetDirectories(p);
     }
+
+    if (files.Length != 0 || directories.Length != 0) return;
     
-    if (!files.Any() && !directories.Any())
-    {
-        Console.WriteLine($"folder will deleted - {p}");
-        Console.WriteLine();
-        Directory.Delete(p);
-    }
+    Console.WriteLine($"folder will deleted - {p}");
+    Console.WriteLine();
+    Directory.Delete(p);
 }
 
 var filesForDelete = new List<FileInformation>();
